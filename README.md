@@ -128,7 +128,83 @@ Relationships:
 
 A payment is linked to a single booking.
 
+
+#Feature Breakdown:
+
+1. User Management
+Users can register, log in, and manage their profiles. The system supports roles for both property owners (hosts) and customers (renters), enabling secure access and interaction based on user type.
+
+2. Property Management
+Hosts can create, update, and delete property listings. Each listing includes essential details such as title, description, location, price, and availability, enabling users to showcase and manage their rental offerings effectively.
+
+3. Booking System
+Registered users can book available properties for specific dates. The system handles booking validation (e.g., no overlapping bookings), and stores booking history for both hosts and renters.
+
+4. Review System
+After completing a stay, users can leave reviews and ratings for properties. This helps build trust among users and provides valuable feedback for property owners.
+
+5. Payment Integration
+The system includes a payment module that processes transactions securely. It ensures that each booking is associated with a successful payment, enhancing trust and automation for both users and property owners.
+
 Each booking has one corresponding payment.
+
+
+
+#API Security:
+
+1. Authentication
+We use secure token-based authentication (e.g., JWT or session-based) to verify the identity of users accessing protected endpoints. This prevents unauthorized users from performing actions such as booking properties or managing accounts.
+
+Why it matters:
+Authentication ensures that only legitimate users can access their personal data and perform authorized actions, protecting user accounts from being compromised.
+
+2. Authorization
+Role-based access control (RBAC) is enforced to ensure users can only access resources and perform actions appropriate to their role (e.g., host vs. renter).
+
+Why it matters:
+Authorization protects the system from misuse—such as a renter attempting to delete another user's property or access admin-level features.
+
+3. Rate Limiting
+API endpoints are rate-limited to prevent brute-force attacks and misuse of resources. This includes setting limits on login attempts, booking submissions, and other sensitive operations.
+
+Why it matters:
+Rate limiting protects against abuse, DDoS attacks, and ensures fair use of resources.
+
+4. Input Validation & Sanitization
+All user input is validated and sanitized to prevent common attacks such as SQL injection and cross-site scripting (XSS).
+
+Why it matters:
+Proper validation ensures the system handles data securely and prevents attackers from exploiting input vulnerabilities.
+
+5. Secure Payments
+Payment information is processed via trusted third-party gateways (e.g., Stripe, PayPal) using encrypted communication.
+
+Why it matters:
+Handling payments securely ensures the protection of sensitive financial data and builds trust with users.
+
+
+
+#CI/CD Pipeline:
+Continuous Integration (CI) and Continuous Deployment/Delivery (CD) pipelines automate the process of testing, building, and deploying code changes. This ensures that every change made to the codebase is verified, reducing the risk of bugs and speeding up the development cycle.
+
+Implementing a CI/CD pipeline is crucial for:
+
+Maintaining code quality: Automated tests catch bugs before they reach production.
+
+Faster deployment: Changes can be deployed more frequently and reliably.
+
+Improved collaboration: Developers can merge changes confidently, knowing the pipeline will validate them.
+
+Tools Used:
+GitHub Actions: Automates workflows like running tests, building the app, and deploying to production.
+
+Docker: Containerizes the application to ensure consistent environments across development, testing, and production.
+
+(Optional) Heroku / AWS / DigitalOcean: For hosting and deployment of the live application.
+
+
+
+
 
 
 
